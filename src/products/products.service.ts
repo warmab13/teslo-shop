@@ -65,19 +65,29 @@ export class ProductsService {
     if( isUUID(term) ){
       product = await this.productRepository.findOneBy({ id:term });
     }else{
-      const queryBuilder = this.productRepository.createQueryBuilder();
+      const queryBuilder = this.productRepository.createQueryBuilder('prod');
       
       product = await queryBuilder
         .where(`UPPER(title) =:title or slug=:slug`, {
           title: term.toUpperCase(), 
           slug: term.toLowerCase()
-        }).getOne();
+        })
+        .leftJoinAndSelect('prod.images', 'prodImages')
+        .getOne();
     }
 
     if( !product )
       throw new NotFoundException(`Product with id ${term} not found`)
     
     return product;
+  }
+
+  async findOnePlain( term: string ){
+    const { images = [], ...rest } = await this.findOne( term );
+    return{
+      ...rest,
+      images: images.map( image => image.url )
+    }
   }
 
   async update(id: string, updateProductDto: UpdateProductDto) {
