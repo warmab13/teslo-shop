@@ -146,4 +146,19 @@ export class ProductsService {
     this.logger.error(error);
     throw new InternalServerErrorException('Helppp!!!')
   }
+
+  async deleteAllProducts(){
+    const query = this.productRepository.createQueryBuilder('product');
+
+    try {
+      return await query
+        .delete()
+        .where({})
+        .execute();
+
+    } catch (error) {
+      this.handleDbExceptions(error);
+    }
+  }
+
 }
