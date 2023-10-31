@@ -16,3 +16,13 @@
 ```
 docker-compose up -d
 ```
+
+6.- Seed Execute
+```
+GET http://localhost:3000/api/seed
+```
+
+7.- Get up service: 
+```
+yarn start:dev
+```
