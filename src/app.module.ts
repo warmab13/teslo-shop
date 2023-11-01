@@ -10,6 +10,7 @@ import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { MessagesWsModule } from './messages-ws/messages-ws.module';
 
+//Postgres configuration
 @Module({
   imports: [
     ConfigModule.forRoot(),
