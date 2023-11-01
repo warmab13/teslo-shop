@@ -26,3 +26,5 @@ GET http://localhost:3000/api/seed
 ```
 yarn start:dev
 ```
+
+8.- Production Notes
