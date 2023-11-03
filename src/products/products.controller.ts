@@ -9,7 +9,7 @@ import { ValidRoles } from 'src/auth/interfaces';
 import { User } from 'src/auth/entities/user.entity';
 import { Product } from './entities';
 
-@ApiTags('Products')
+@ApiTags('Products API')
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}

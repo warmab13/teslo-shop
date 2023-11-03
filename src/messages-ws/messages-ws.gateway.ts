@@ -66,6 +66,11 @@ export class MessagesWsGateway implements OnGatewayConnection, OnGatewayDisconne
     })
   }
 
+  @SubscribeMessage('private-message')
+  handlePrivateMessage( client: Socket, payload: { recipientId: string, message: string }): void{
+    this.wss.to(payload.recipientId).emit('private-message', payload.message);
+  }
+
 
 
 }
