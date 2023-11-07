@@ -7,7 +7,7 @@ import { diskStorage } from 'multer';
 import { createReadStream } from 'fs';
 import { ConfigService } from '@nestjs/config';
 
-@ApiTags('Files Get and Upload')
+@ApiTags('Files Get and Upload API')
 @Controller('files')
 export class FilesController {
   constructor(
